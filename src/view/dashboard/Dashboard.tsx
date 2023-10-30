@@ -312,7 +312,7 @@ export const Dashboard = () => {
             />
           </div>
         </div>
-        <div className={"card col-span-12 lg:col-span-6 p-3 rounded"}>
+        <div className={"card col-span-12 lg:col-span-6 p-3 rounded-2xl"}>
           <p className={"text-blue-700 font-semibold"}>Tasks Due Today</p>
           <span className="my-3 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-500 text-white">
             Total Count 5
@@ -337,7 +337,7 @@ export const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className={"card col-span-12 lg:col-span-6 p-3 rounded"}>
+        <div className={"card col-span-12 lg:col-span-6 p-3 rounded-2xl"}>
           <p className={"text-blue-700 font-semibold"}>Tasks Overdue</p>
           <span className="my-3 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-500 text-white">
             Total Count 5

@@ -1,7 +1,8 @@
 import { NormalTable } from "../../components/tables/NormalTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSort } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faSort } from "@fortawesome/free-solid-svg-icons";
 import { ProgressBar } from "../../components/progress/ProgressBar";
+import { Dropdown } from "../../components/inputs/dropdowns/Dropdown";
 
 export const Projects = () => {
   const Badge = (status: string) => {
@@ -80,26 +81,37 @@ export const Projects = () => {
     <div className={"px-5"}>
       <p className={"font-bold text-2xl my-5"}>Projects</p>
       <div className={"grid grid-cols-12 gap-5"}>
-        <div className={"card col-span-4 rounded p-3"}></div>
+        <div className={"card col-span-4 rounded p-3"}>
+          <p className={"font-extrabold text-5xl"}>10 Total Projects</p>
+        </div>
         <div className={"card col-span-4 rounded p-3"}></div>
         <div className={"card col-span-4 rounded p-3"}></div>
       </div>
-      <div className={"card rounded-lg mt-5"}>
-        <div className={"bg-white grid grid-cols-12 p-3 gap-5 rounded-lg"}>
-          <div className={"col-span-3 border-r-[1px]"}></div>
-          <div className={"col-span-9"}>
-            <input
-              placeholder={"Search here..."}
-              className={"text-sm focus:outline-0"}
-            />
-          </div>
-        </div>
-        <div>
-          <NormalTable
-            columnHeaders={projectColumnHeaders}
-            tableData={projectTableData}
+      <div className={"card rounded-lg mt-5 overflow-hidden"}>
+        <div className={"flex bg-white text-sm"}>
+          <select className="py-2 px-3 pr-9 focus:outline-0 text-sm border-r-[1px]">
+            <option selected>All Projects</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+          <input
+            type="text"
+            className={"grow focus:outline-0 px-5"}
+            placeholder={"Search here..."}
           />
+          <button
+            className={
+              "p-3 bg-blue-500 text-white hover:bg-blue-600 transition-all"
+            }
+          >
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
         </div>
+        <NormalTable
+          columnHeaders={projectColumnHeaders}
+          tableData={projectTableData}
+        />
       </div>
     </div>
   );
