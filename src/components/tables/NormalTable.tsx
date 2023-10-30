@@ -1,5 +1,5 @@
 interface NormalTableProps {
-  columnHeaders: Array<string>;
+  columnHeaders: Array<any>;
   tableData: Array<any>;
   sideRowHeaders?: Array<string>;
 }
@@ -31,7 +31,7 @@ export const NormalTable = ({
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {tableData?.map((row, index) => (
-                  <tr>
+                  <tr key={index}>
                     {sideRowHeaders?.length && (
                       <td
                         className={

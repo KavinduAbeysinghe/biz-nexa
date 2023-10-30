@@ -257,7 +257,7 @@ export const Dashboard = () => {
             "card col-span-12 lg:col-span-4 p-3 rounded-2xl flex flex-col justify-between"
           }
         >
-          <p className={"text-blue-700 font-semibold"}>Timesheets</p>
+          <p className={"text-blue-700 font-semibold"}>Time Sheets</p>
           <div className={"rounded border-2 p-2"}>
             <p className={"text-sm font-semibold"}>Punch in at</p>
             <p className={"text-sm text-gray-600"}>
