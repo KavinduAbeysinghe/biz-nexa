@@ -4,6 +4,7 @@ import { Dashboard } from "./dashboard/Dashboard";
 import { Sidebar } from "../components/sidebar/Sidebar";
 import { Appbar } from "../components/appbar/Appbar";
 import { MyProfile } from "./profile/MyProfile";
+import { Projects } from "./projects/Projects";
 
 export const MainLayout = () => {
   return (
@@ -23,6 +24,7 @@ const Layout = () => {
         <Routes>
           <Route element={<Dashboard />} path="/dashboard" />
           <Route element={<MyProfile />} path="/profile" />
+          <Route element={<Projects />} path="/projects" />
         </Routes>
       </div>
     </div>

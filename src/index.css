@@ -14,6 +14,10 @@
   }
 }
 
+.card {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 .profile-cover {
   background-image: url("./assets/images/profileCover.jpeg");
 }
@@ -43,4 +47,18 @@ code {
 
 * {
   font-family: "Inter", sans-serif !important;
+  scroll-behavior: smooth !important;
 }
+
+/*::-webkit-scrollbar*/
+/*{*/
+/*  width: 8px;*/
+/*  height: 8px;*/
+/*  background-color: transparent;*/
+/*}*/
+
+/*::-webkit-scrollbar-thumb*/
+/*{*/
+/*  border-radius: 10px;*/
+/*  background-color: #bdbdbd;*/
+/*}*/
