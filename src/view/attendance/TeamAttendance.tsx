@@ -12,7 +12,19 @@ export const TeamAttendance = () => {
       <div className="card col-span-12 rounded-2xl p-5">
         <p className={"text-blue-700 font-semibold mb-3"}>Attendance History</p>
         <div className={"mb-3 grid grid-cols-12 gap-5"}>
-          <div className="col-span-6">
+          <div className="col-span-12 lg:col-span-3">
+            <TextField
+              label={"Team Member"}
+              type={"text"}
+              id={"teamMember"}
+              helperText={""}
+              error={false}
+              required={false}
+              register={undefined}
+              placeholder={"Enter team member name"}
+            />
+          </div>
+          <div className="col-span-12 md:col-span-6 lg:col-span-2">
             <TextField
               label={"From"}
               type={"date"}
@@ -23,18 +35,7 @@ export const TeamAttendance = () => {
               register={undefined}
             />
           </div>
-          <div className="col-span-3">
-            <TextField
-              label={"From"}
-              type={"date"}
-              id={"dateFrom"}
-              helperText={""}
-              error={false}
-              required={false}
-              register={undefined}
-            />
-          </div>
-          <div className="col-span-3">
+          <div className="col-span-12 md:col-span-6 lg:col-span-2">
             <TextField
               label={"To"}
               type={"date"}
@@ -45,7 +46,7 @@ export const TeamAttendance = () => {
               register={undefined}
             />
           </div>
-          <div className="col-span-2">
+          <div className="col-span-12 lg:col-span-2">
             <div className={"mt-7"}>
               <Button text={"Find"} btnClass={"primary"} type={"button"} />
             </div>

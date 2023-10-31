@@ -2,12 +2,67 @@ import { ProgressBar } from "../../components/progress/ProgressBar";
 import { TextField } from "../../components/inputs/TextField";
 import { Button } from "../../components/buttons/Button";
 import { NormalTable } from "../../components/tables/NormalTable";
-import {
-  attendanceColumnHeaders,
-  attendanceTableData,
-} from "../dashboard/Dashboard";
+import { TableInput } from "../../components/inputs/texts/TableInput";
 
 export const MyAttendence = () => {
+  const myAttendanceColumnHeaders = [
+    "S.NO",
+    "Date",
+    "Production",
+    "Punch In",
+    "Punch Out",
+    "Break",
+    "Overtime",
+  ];
+
+  const attendanceTableData = [
+    {
+      sNo: 1001,
+      date: "28 Oct 2023",
+      production: "",
+      punchIn: <TableInput type={"time"} value={""} />,
+      punchOut: <TableInput type={"time"} value={""} />,
+      break: <TableInput type={"number"} value={""} />,
+      overtime: <TableInput type={"number"} value={""} />,
+    },
+    {
+      sNo: 1001,
+      date: "28 Oct 2023",
+      production: "",
+      punchIn: <TableInput type={"time"} value={""} />,
+      punchOut: <TableInput type={"time"} value={""} />,
+      break: <TableInput type={"number"} value={""} />,
+      overtime: <TableInput type={"number"} value={""} />,
+    },
+    {
+      sNo: 1001,
+      date: "28 Oct 2023",
+      production: "8 hrs",
+      punchIn: <TableInput type={"time"} value={"08:00"} />,
+      punchOut: <TableInput type={"time"} value={"17:30"} />,
+      break: <TableInput type={"number"} value={"1.5"} />,
+      overtime: <TableInput type={"number"} value={"5.5"} />,
+    },
+    {
+      sNo: 1001,
+      date: "28 Oct 2023",
+      production: "8 hrs",
+      punchIn: <TableInput type={"time"} value={"08:00"} />,
+      punchOut: <TableInput type={"time"} value={"17:30"} />,
+      break: <TableInput type={"number"} value={"1.5"} />,
+      overtime: <TableInput type={"number"} value={"5.5"} />,
+    },
+    {
+      sNo: 1001,
+      date: "28 Oct 2023",
+      production: "8 hrs",
+      punchIn: <TableInput type={"time"} value={"08:00"} />,
+      punchOut: <TableInput type={"time"} value={"17:30"} />,
+      break: <TableInput type={"number"} value={"1.5"} />,
+      overtime: <TableInput type={"number"} value={"5.5"} />,
+    },
+  ];
+
   const topCardData = [
     {
       title: "Your Total Days",
@@ -45,7 +100,7 @@ export const MyAttendence = () => {
         <div className={"grid grid-cols-12"}>
           <div
             className={
-              "col-span-12 md:col-span-3 border-r-2 flex flex-col items-center justify-center gap-2"
+              "col-span-12 md:col-span-3 border-r-2 flex flex-col items-center justify-center gap-2 px-5 lg:px-10 text-center"
             }
           >
             <div className="relative inline-block">
@@ -76,7 +131,7 @@ export const MyAttendence = () => {
           </div>
           <div
             className={
-              "col-span-12 md:col-span-9 grid grid-cols-12 gap-10 items-center px-10"
+              "col-span-12 md:col-span-9 grid grid-cols-12 gap-10 items-center px-5 lg:px-10"
             }
           >
             {topCardData?.map((c: any, index) => (
@@ -130,9 +185,13 @@ export const MyAttendence = () => {
           </div>
         </div>
         <NormalTable
-          columnHeaders={attendanceColumnHeaders}
+          columnHeaders={myAttendanceColumnHeaders}
           tableData={attendanceTableData}
         />
+        <div className={"flex justify-end gap-5 mt-5"}>
+          <Button text={"Clear"} btnClass={"secondary"} type={"button"} />
+          <Button text={"Save"} btnClass={"primary"} type={"button"} />
+        </div>
       </div>
     </div>
   );

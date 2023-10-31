@@ -7,6 +7,9 @@ import { MyProfile } from "./profile/MyProfile";
 import { Projects } from "./projects/Projects";
 import { CreateProject } from "./projects/CreateProject";
 import { Attendance } from "./attendance/Attendance";
+import { EmployeeManagement } from "./employeeManagement/EmployeeManagement";
+import { CreateEmployee } from "./employeeManagement/CreateEmployee";
+import { Task } from "./task/Task";
 
 export const MainLayout = () => {
   return (
@@ -30,6 +33,12 @@ const Layout = () => {
           <Route element={<CreateProject />} path="/projects/create-project" />
           <Route element={<CreateProject />} path="/projects/view-project/*" />
           <Route element={<Attendance />} path="/attendance" />
+          <Route element={<EmployeeManagement />} path="/employee-management" />
+          <Route
+            element={<CreateEmployee />}
+            path="/employee-management/create-employee"
+          />
+          <Route element={<Task />} path="/tasks" />
         </Routes>
       </div>
     </div>

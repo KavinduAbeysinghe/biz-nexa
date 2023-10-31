@@ -5,6 +5,7 @@ import CoPresentIcon from "@mui/icons-material/CoPresent";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import TaskIcon from "@mui/icons-material/Task";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 export const Sidebar = () => {
   const sideBarItems: any[] = [
@@ -37,6 +38,11 @@ export const Sidebar = () => {
       name: "Profile",
       icon: <AccountCircleIcon fontSize="small" />,
       path: "/control/profile",
+    },
+    {
+      name: "Employees",
+      icon: <BadgeIcon fontSize="small" />,
+      path: "/control/employee-management",
     },
   ];
 

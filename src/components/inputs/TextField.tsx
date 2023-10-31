@@ -8,6 +8,7 @@ interface TextFieldProps {
   error: boolean;
   required: boolean;
   register: any;
+  disabled?: boolean;
 }
 
 export const TextField = ({
@@ -20,6 +21,7 @@ export const TextField = ({
   error,
   required,
   register,
+  disabled,
 }: TextFieldProps) => {
   return (
     <div>
@@ -33,6 +35,7 @@ export const TextField = ({
       </label>
       <div className="relative">
         <input
+          disabled={disabled}
           {...register}
           type={type}
           id={id}
