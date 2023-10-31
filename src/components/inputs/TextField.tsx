@@ -36,7 +36,7 @@ export const TextField = ({
           {...register}
           type={type}
           id={id}
-          className={`py-3 px-4 block w-full border-[1px] ${
+          className={`py-2 px-3 block w-full border-[1px] ${
             error && "border-red-700"
           } rounded-md text-sm focus:outline-0 ${
             icon ? "pr-10" : ""

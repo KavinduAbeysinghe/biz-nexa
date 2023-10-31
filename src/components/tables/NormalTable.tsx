@@ -1,13 +1,20 @@
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { ActionButton } from "../buttons/ActionButton";
+
 interface NormalTableProps {
   columnHeaders: Array<any>;
   tableData: Array<any>;
   sideRowHeaders?: Array<string>;
+  actionButtons?: Array<any>;
+  id?: string;
 }
 
 export const NormalTable = ({
   columnHeaders,
   tableData,
   sideRowHeaders,
+  actionButtons,
+  id,
 }: NormalTableProps) => {
   return (
     <div className="flex flex-col">
@@ -17,6 +24,7 @@ export const NormalTable = ({
             <table className="min-w-full divide-y divide-gray-200">
               <thead className={"bg-gray-50"}>
                 <tr>
+                  {actionButtons?.length && <th></th>}
                   {sideRowHeaders?.length && <th></th>}
                   {columnHeaders?.map((header, index) => (
                     <th
@@ -32,6 +40,26 @@ export const NormalTable = ({
               <tbody className="divide-y divide-gray-200">
                 {tableData?.map((row, index) => (
                   <tr key={index}>
+                    {actionButtons?.length ? (
+                      <td
+                        className={
+                          "px-6 py-3 whitespace-nowrap text-sm font-semibold text-gray-800"
+                        }
+                      >
+                        {actionButtons?.map((b: any, index) => (
+                          <ActionButton
+                            key={index}
+                            tooltip={b.tooltip}
+                            icon={b.icon}
+                            handleClick={() => {
+                              return b.handleClick(row[id ? id : ""]);
+                            }}
+                          />
+                        ))}
+                      </td>
+                    ) : (
+                      <></>
+                    )}
                     {sideRowHeaders?.length && (
                       <td
                         className={

@@ -125,6 +125,7 @@ export const Login = () => {
                 btnClass="primary"
                 type="submit"
                 onClick={handleSubmit(handleLogin)}
+                fullWidth={true}
               />
               <div className="py-6 flex items-center text-sm text-gray-300 uppercase before:flex-[1_1_0%] before:border-t before:mr-6 after:flex-[1_1_0%] after:border-t after:ml-6">
                 Or
@@ -133,6 +134,7 @@ export const Login = () => {
                 text="Continue with Google"
                 btnClass="secondary"
                 type="button"
+                fullWidth={true}
               />
               <p className="text-sm text-gray-500 text-center mt-5">
                 Don't have an account? Sign Up

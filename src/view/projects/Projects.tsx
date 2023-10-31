@@ -2,9 +2,17 @@ import { NormalTable } from "../../components/tables/NormalTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faSort } from "@fortawesome/free-solid-svg-icons";
 import { ProgressBar } from "../../components/progress/ProgressBar";
-import { Dropdown } from "../../components/inputs/dropdowns/Dropdown";
+import { useLocation, useNavigate } from "react-router-dom";
+import ViewTimelineIcon from "@mui/icons-material/ViewTimeline";
+import { faEye } from "@fortawesome/free-regular-svg-icons";
 
 export const Projects = () => {
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
+  const searchParams = new URLSearchParams(location.search);
+
   const Badge = (status: string) => {
     return (
       <span className="my-3 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-500 text-white">
@@ -32,6 +40,45 @@ export const Projects = () => {
     "Owner",
     ColumnHeader("Status", faSort),
     ColumnHeader("Tasks", faSort),
+  ];
+
+  const projectData = [
+    {
+      projectCode: "P1001",
+      projectName: "Research and Development 2023",
+      completed: "67.5%",
+      owner: "Jane Watson",
+      startDate: "",
+      status: true,
+    },
+    {
+      projectCode: "P1001",
+      projectName: "Research and Development 2023",
+      completed: "67.5%",
+      owner: "Jane Watson",
+      status: true,
+    },
+    {
+      projectCode: "P1001",
+      projectName: "Research and Development 2023",
+      completed: "67.5%",
+      owner: "Jane Watson",
+      status: true,
+    },
+    {
+      projectCode: "P1001",
+      projectName: "Research and Development 2023",
+      completed: "67.5%",
+      owner: "Jane Watson",
+      status: true,
+    },
+    {
+      projectCode: "P1001",
+      projectName: "Research and Development 2023",
+      completed: "67.5%",
+      owner: "Jane Watson",
+      status: true,
+    },
   ];
 
   const projectTableData = [
@@ -77,15 +124,77 @@ export const Projects = () => {
     },
   ];
 
+  const handleCreateProject = () =>
+    navigate("/control/projects/create-project");
+
+  const handleViewProject = (id: any) => {
+    const obj = { page: "view", id: id };
+    searchParams.set("project", JSON.stringify(obj));
+    navigate(`/control/projects/view-project?${searchParams}`);
+  };
+
+  const actionButtons = [
+    {
+      tooltip: "View",
+      icon: faEye,
+      handleClick: handleViewProject,
+    },
+  ];
+
   return (
     <div className={"px-5"}>
       <p className={"font-bold text-2xl my-5"}>Projects</p>
-      <div className={"grid grid-cols-12 gap-5"}>
-        <div className={"card col-span-4 rounded p-3"}>
-          <p className={"font-extrabold text-5xl"}>10 Total Projects</p>
+      <div className={"flex justify-end items-center"}>
+        <button
+          onClick={handleCreateProject}
+          className={
+            "bg-blue-500 hover:bg-blue-600 text-sm py-2 px-3 font-semibold text-white rounded-lg"
+          }
+        >
+          CREATE PROJECT
+        </button>
+      </div>
+      <div className={"grid grid-cols-12 gap-5 mt-5"}>
+        <div
+          className={
+            "card col-span-6 md:col-span-6 lg:col-span-3 rounded-2xl p-3"
+          }
+        >
+          <p className={"font-bold text-lg text-gray-600"}>Total</p>
+          <p className={"font-extrabold text-5xl text-primary text-center"}>
+            14
+          </p>
         </div>
-        <div className={"card col-span-4 rounded p-3"}></div>
-        <div className={"card col-span-4 rounded p-3"}></div>
+        <div
+          className={
+            "card col-span-6 md:col-span-6 lg:col-span-3 rounded-2xl p-3"
+          }
+        >
+          <p className={"font-bold text-lg text-gray-600"}>Completed</p>
+          <p className={"font-extrabold text-5xl text-primary text-center"}>
+            5
+          </p>
+        </div>
+        <div
+          className={
+            "card col-span-6 md:col-span-6 lg:col-span-3 rounded-2xl p-3"
+          }
+        >
+          <p className={"font-bold text-lg text-gray-600"}>Active</p>
+          <p className={"font-extrabold text-5xl text-primary text-center"}>
+            7
+          </p>
+        </div>
+        <div
+          className={
+            "card col-span-6 md:col-span-6 lg:col-span-3 rounded-2xl p-3"
+          }
+        >
+          <p className={"font-bold text-lg text-gray-600"}>Inactive</p>
+          <p className={"font-extrabold text-5xl text-primary text-center"}>
+            2
+          </p>
+        </div>
       </div>
       <div className={"card rounded-lg mt-5 overflow-hidden"}>
         <div className={"flex bg-white text-sm"}>
@@ -111,6 +220,8 @@ export const Projects = () => {
         <NormalTable
           columnHeaders={projectColumnHeaders}
           tableData={projectTableData}
+          actionButtons={actionButtons}
+          id={"projectCode"}
         />
       </div>
     </div>

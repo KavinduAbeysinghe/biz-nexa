@@ -6,6 +6,64 @@ import { NormalTable } from "../../components/tables/NormalTable";
 import { CollapsibleNotice } from "../../components/collapsibleNotices/CollapsibleNotice";
 import { Dropdown } from "../../components/inputs/dropdowns/Dropdown";
 
+export const attendanceColumnHeaders = [
+  "S.NO",
+  "Date",
+  "Punch In",
+  "Punch Out",
+  "Production",
+  "Break",
+  "Overtime",
+];
+
+export const attendanceTableData = [
+  {
+    sNo: 1001,
+    date: "28 Oct 2023",
+    punchIn: "8 AM",
+    punchOut: "5 PM",
+    production: "8 hrs",
+    break: "1 hrs",
+    overtime: "1 hrs",
+  },
+  {
+    sNo: 1001,
+    date: "28 Oct 2023",
+    punchIn: "8 AM",
+    punchOut: "5 PM",
+    production: "8 hrs",
+    break: "1 hrs",
+    overtime: "1 hrs",
+  },
+  {
+    sNo: 1001,
+    date: "28 Oct 2023",
+    punchIn: "8 AM",
+    punchOut: "5 PM",
+    production: "8 hrs",
+    break: "1 hrs",
+    overtime: "1 hrs",
+  },
+  {
+    sNo: 1001,
+    date: "28 Oct 2023",
+    punchIn: "8 AM",
+    punchOut: "5 PM",
+    production: "8 hrs",
+    break: "1 hrs",
+    overtime: "1 hrs",
+  },
+  {
+    sNo: 1001,
+    date: "28 Oct 2023",
+    punchIn: "8 AM",
+    punchOut: "5 PM",
+    production: "8 hrs",
+    break: "1 hrs",
+    overtime: "1 hrs",
+  },
+];
+
 export const Dashboard = () => {
   const statisticsOptions = [
     {
@@ -42,64 +100,6 @@ export const Dashboard = () => {
       total: 10,
       notation: "hrs",
       barColor: "bg-progressYellow",
-    },
-  ];
-
-  const attendanceColumnHeaders = [
-    "S.NO",
-    "Date",
-    "Punch In",
-    "Punch Out",
-    "Production",
-    "Break",
-    "Overtime",
-  ];
-
-  const attendanceTableData = [
-    {
-      sNo: 1001,
-      date: "28 Oct 2023",
-      punchIn: "8 AM",
-      punchOut: "5 PM",
-      production: "8 hrs",
-      break: "1 hrs",
-      overtime: "1 hrs",
-    },
-    {
-      sNo: 1001,
-      date: "28 Oct 2023",
-      punchIn: "8 AM",
-      punchOut: "5 PM",
-      production: "8 hrs",
-      break: "1 hrs",
-      overtime: "1 hrs",
-    },
-    {
-      sNo: 1001,
-      date: "28 Oct 2023",
-      punchIn: "8 AM",
-      punchOut: "5 PM",
-      production: "8 hrs",
-      break: "1 hrs",
-      overtime: "1 hrs",
-    },
-    {
-      sNo: 1001,
-      date: "28 Oct 2023",
-      punchIn: "8 AM",
-      punchOut: "5 PM",
-      production: "8 hrs",
-      break: "1 hrs",
-      overtime: "1 hrs",
-    },
-    {
-      sNo: 1001,
-      date: "28 Oct 2023",
-      punchIn: "8 AM",
-      punchOut: "5 PM",
-      production: "8 hrs",
-      break: "1 hrs",
-      overtime: "1 hrs",
     },
   ];
 

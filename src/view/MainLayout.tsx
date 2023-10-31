@@ -5,6 +5,8 @@ import { Sidebar } from "../components/sidebar/Sidebar";
 import { Appbar } from "../components/appbar/Appbar";
 import { MyProfile } from "./profile/MyProfile";
 import { Projects } from "./projects/Projects";
+import { CreateProject } from "./projects/CreateProject";
+import { Attendance } from "./attendance/Attendance";
 
 export const MainLayout = () => {
   return (
@@ -25,6 +27,9 @@ const Layout = () => {
           <Route element={<Dashboard />} path="/dashboard" />
           <Route element={<MyProfile />} path="/profile" />
           <Route element={<Projects />} path="/projects" />
+          <Route element={<CreateProject />} path="/projects/create-project" />
+          <Route element={<CreateProject />} path="/projects/view-project/*" />
+          <Route element={<Attendance />} path="/attendance" />
         </Routes>
       </div>
     </div>
