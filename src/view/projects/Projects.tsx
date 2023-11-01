@@ -5,6 +5,7 @@ import { ProgressBar } from "../../components/progress/ProgressBar";
 import { useLocation, useNavigate } from "react-router-dom";
 import ViewTimelineIcon from "@mui/icons-material/ViewTimeline";
 import { faEye } from "@fortawesome/free-regular-svg-icons";
+import { Button } from "../../components/buttons/Button";
 
 export const Projects = () => {
   const navigate = useNavigate();
@@ -88,7 +89,7 @@ export const Projects = () => {
       completed: "67.5%",
       owner: "Jane Watson",
       status: Badge("Active"),
-      tasks: <ProgressBar color={"progressBlue"} completed={5} total={5} />,
+      tasks: <ProgressBar color={"bg-progressBlue"} completed={3} total={5} />,
     },
     {
       projectCode: "P1001",
@@ -96,7 +97,7 @@ export const Projects = () => {
       completed: "67.5%",
       owner: "Jane Watson",
       status: Badge("Active"),
-      tasks: <ProgressBar color={"progressBlue"} completed={5} total={5} />,
+      tasks: <ProgressBar color={"bg-progressBlue"} completed={2} total={5} />,
     },
     {
       projectCode: "P1001",
@@ -104,7 +105,7 @@ export const Projects = () => {
       completed: "67.5%",
       owner: "Jane Watson",
       status: Badge("Active"),
-      tasks: <ProgressBar color={"progressBlue"} completed={5} total={5} />,
+      tasks: <ProgressBar color={"bg-progressBlue"} completed={1} total={5} />,
     },
     {
       projectCode: "P1001",
@@ -112,7 +113,7 @@ export const Projects = () => {
       completed: "67.5%",
       owner: "Jane Watson",
       status: Badge("Active"),
-      tasks: <ProgressBar color={"progressBlue"} completed={5} total={5} />,
+      tasks: <ProgressBar color={"bg-progressBlue"} completed={5} total={5} />,
     },
     {
       projectCode: "P1001",
@@ -120,7 +121,7 @@ export const Projects = () => {
       completed: "67.5%",
       owner: "Jane Watson",
       status: Badge("Active"),
-      tasks: <ProgressBar color={"progressBlue"} completed={5} total={5} />,
+      tasks: <ProgressBar color={"bg-progressBlue"} completed={2} total={5} />,
     },
   ];
 
@@ -145,14 +146,12 @@ export const Projects = () => {
     <div className={"px-5"}>
       <p className={"font-bold text-2xl my-5"}>Projects</p>
       <div className={"flex justify-end items-center"}>
-        <button
+        <Button
+          text={"+ Create Project"}
+          btnClass={"primary"}
+          type={"button"}
           onClick={handleCreateProject}
-          className={
-            "bg-blue-500 hover:bg-blue-600 text-sm py-2 px-3 font-semibold text-white rounded-lg"
-          }
-        >
-          CREATE PROJECT
-        </button>
+        />
       </div>
       <div className={"grid grid-cols-12 gap-5 mt-5"}>
         <div

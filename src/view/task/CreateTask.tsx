@@ -1,94 +1,41 @@
 import { TextField } from "../../components/inputs/TextField";
-import { Button } from "../../components/buttons/Button";
+import { Switch } from "../../components/inputs/switch/Switch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import ViewTimelineIcon from "@mui/icons-material/ViewTimeline";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Button } from "../../components/buttons/Button";
+import { guests } from "../projects/CreateProject";
 
-export const guests = [
-  {
-    guestId: 1,
-    img: require("../../assets/images/person.jpg"),
-  },
-  {
-    guestId: 2,
-    img: require("../../assets/images/person.jpg"),
-  },
-  {
-    guestId: 3,
-    img: require("../../assets/images/person.jpg"),
-  },
-  {
-    guestId: 4,
-    img: require("../../assets/images/person.jpg"),
-  },
-];
-
-export const CreateProject = () => {
-  const location = useLocation();
-
-  const searchParams = new URLSearchParams(location.search);
-
-  const [title, setTitle] = useState<string>("");
-
-  const [id, setId] = useState<any>("");
-
-  useEffect(() => {
-    const obj = searchParams.get("project");
-    if (obj) {
-      const proj = JSON.parse(obj);
-      if (proj?.page === "view") {
-        setId(proj?.id);
-        setTitle("View Project");
-      }
-    } else {
-      setTitle("Create Project");
-    }
-  }, [location]);
-
+export const CreateTask = () => {
   return (
-    <div className={"px-5"}>
-      <p className={"font-bold text-2xl my-5"}>{title}</p>
+    <div className="p-5">
+      <p className={"font-bold text-2xl my-5"}>Create Task</p>
       <div className={"card p-3 rounded-2xl"}>
-        <div className={"grid grid-cols-12 gap-5"}>
-          <div className={"col-span-12 lg:col-span-3"}>
+        <div className="grid grid-cols-12 gap-x-5 gap-y-2">
+          <div className="col-span-4">
             <TextField
-              label={"Project Code"}
+              label={"Task Name"}
               type={"text"}
-              id={"projectCode"}
+              id={"taskName"}
               helperText={""}
               error={false}
               required={true}
               register={undefined}
-              placeholder={"Enter project code"}
+              placeholder={"Enter task name"}
             />
           </div>
-          <div className={"col-span-12 lg:col-span-3"}>
+          <div className="col-span-8">
             <TextField
-              label={"Project Name"}
+              label={"Task Description"}
               type={"text"}
-              id={"projectName"}
+              id={"taskDescription"}
               helperText={""}
               error={false}
               required={true}
               register={undefined}
-              placeholder={"Enter project name"}
+              placeholder={"Enter task description"}
             />
           </div>
-          <div className={"col-span-12 lg:col-span-6"}>
-            <TextField
-              label={"Project Description"}
-              type={"text"}
-              id={"projectName"}
-              helperText={""}
-              error={false}
-              required={true}
-              register={undefined}
-              placeholder={"Enter project description"}
-            />
-          </div>
-          <div className={"col-span-12 md:col-span-6 lg:col-span-3"}>
+          <div className="col-span-2">
             <TextField
               label={"Start Date"}
               type={"date"}
@@ -99,38 +46,52 @@ export const CreateProject = () => {
               register={undefined}
             />
           </div>
-          <div className={"col-span-12 md:col-span-6 lg:col-span-3"}>
+          <div className="col-span-2">
             <TextField
               label={"End Date"}
               type={"date"}
-              id={"startDate"}
+              id={"endDate"}
               helperText={""}
               error={false}
               required={true}
               register={undefined}
             />
           </div>
-          <div className={"col-span-12 md:col-span-6 lg:col-span-3"}>
+          <div className="col-span-2">
             <TextField
-              label={"Time"}
-              type={"time"}
-              id={"time"}
+              label={"Due Date"}
+              type={"date"}
+              id={"dueDate"}
               helperText={""}
               error={false}
               required={true}
               register={undefined}
             />
           </div>
-          <div className={"col-span-12 md:col-span-6 lg:col-span-3"}>
+          <div className="col-span-2">
             <TextField
-              label={"Duration"}
+              label={"Work Hours"}
               type={"time"}
-              id={"duration"}
+              id={"dueDate"}
               helperText={""}
               error={false}
               required={true}
               register={undefined}
             />
+          </div>
+          <div className="col-span-2">
+            <TextField
+              label={"Priority"}
+              type={"text"}
+              id={"priority"}
+              helperText={""}
+              error={false}
+              required={true}
+              register={undefined}
+            />
+          </div>
+          <div className="col-span-2">
+            <Switch label={"Status"} id={"status"} disabled={false} />
           </div>
           <div className={"col-span-12"}>
             <TextField

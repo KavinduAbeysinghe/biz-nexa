@@ -10,6 +10,8 @@ import { Attendance } from "./attendance/Attendance";
 import { EmployeeManagement } from "./employeeManagement/EmployeeManagement";
 import { CreateEmployee } from "./employeeManagement/CreateEmployee";
 import { Task } from "./task/Task";
+import { MyCalendar } from "./calendar/Calendar";
+import { CreateTask } from "./task/CreateTask";
 
 export const MainLayout = () => {
   return (
@@ -39,6 +41,8 @@ const Layout = () => {
             path="/employee-management/create-employee"
           />
           <Route element={<Task />} path="/tasks" />
+          <Route element={<MyCalendar />} path="/calendar" />
+          <Route element={<CreateTask />} path="/tasks/create-task" />
         </Routes>
       </div>
     </div>

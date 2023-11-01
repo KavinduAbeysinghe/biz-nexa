@@ -116,6 +116,21 @@ export const EmployeeManagement = () => {
     navigate("/control/employee-management/create-employee");
   };
 
+  const actions = [
+    {
+      name: "View",
+      action: () => {},
+    },
+    {
+      name: "Edit",
+      action: () => {},
+    },
+    {
+      name: "Delete",
+      action: () => {},
+    },
+  ];
+
   return (
     <div className={"px-5"}>
       <p className={"font-bold text-2xl my-5"}>Employee Management</p>
@@ -165,14 +180,31 @@ export const EmployeeManagement = () => {
             className="card col-span-12 md:col-span-6 lg:col-span-3 p-3 rounded-2xl text-sm"
             key={index}
           >
-            <MoreHorizIcon
-              className={"float-right top-0 cursor-pointer hover:text-primary"}
-            />
+            <div
+              className={"float-right top-0 hs-dropdown relative inline-flex"}
+            >
+              <MoreHorizIcon className={"cursor-pointer hover:text-primary"} />
+              <div
+                className="hs-dropdown-menu hs-dropdown-open:opacity-100 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mt-2 bg-white shadow-md rounded-lg p-2"
+                aria-labelledby="hs-dropdown-slideup-animation"
+              >
+                {actions?.map((a: any, index) => (
+                  <div
+                    className={
+                      "cursor-pointer flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
+                    }
+                    key={index}
+                  >
+                    {a?.name}
+                  </div>
+                ))}
+              </div>
+            </div>
             <div className="px-3">
               <Avatar img={emp?.img} status={emp?.status} />
               <p className={"font-semibold mt-2"}>{emp?.name}</p>
               <p className={"font-normal text-gray-500 mt-2"}>
-                {emp?.designation}r
+                {emp?.designation}
               </p>
             </div>
             <div className="bg-white rounded-lg p-3 mt-3">

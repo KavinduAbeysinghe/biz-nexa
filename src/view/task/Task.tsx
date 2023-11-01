@@ -7,13 +7,25 @@ import { Button } from "../../components/buttons/Button";
 import { NormalTable } from "../../components/tables/NormalTable";
 import { faEye, faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { Modal } from "../../components/modals/Modal";
+import { useLayoutEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Task = () => {
+  const navigate = useNavigate();
+
   const tasks = [
     {
       code: "TSK-1001",
       name: "Training and Work Reviews",
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      status: true,
+      isOpen: true,
+      startDate: "2023-10-10",
+      endDate: "2023-11-11",
+      workHours: "08:00",
+      priority: "High",
+      completed: 66,
+      createdBy: "Jane Warren",
       owners: [
         {
           name: "Steven Smith",
@@ -30,9 +42,17 @@ export const Task = () => {
       ],
     },
     {
-      code: "TSK-1001",
-      name: "Training and Work Reviews",
+      code: "TSK-1002",
+      name: "Learning Next JS",
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      status: true,
+      isOpen: true,
+      startDate: "2023-10-10",
+      endDate: "2023-11-11",
+      workHours: "08:00",
+      priority: "High",
+      completed: 66,
+      createdBy: "Jane Warren",
       owners: [
         {
           name: "Steven Smith",
@@ -49,9 +69,17 @@ export const Task = () => {
       ],
     },
     {
-      code: "TSK-1001",
-      name: "Training and Work Reviews",
+      code: "TSK-1003",
+      name: "Preparing a Document for Figma",
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      status: true,
+      isOpen: true,
+      startDate: "2023-10-10",
+      endDate: "2023-11-11",
+      workHours: "08:00",
+      priority: "High",
+      completed: 66,
+      createdBy: "Jane Warren",
       owners: [
         {
           name: "Steven Smith",
@@ -68,9 +96,17 @@ export const Task = () => {
       ],
     },
     {
-      code: "TSK-1001",
-      name: "Training and Work Reviews",
+      code: "TSK-1004",
+      name: "Developing a Complete Fullstack Application",
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      status: true,
+      isOpen: true,
+      startDate: "2023-10-10",
+      endDate: "2023-11-11",
+      workHours: "08:00",
+      priority: "High",
+      completed: 66,
+      createdBy: "Jane Warren",
       owners: [
         {
           name: "Steven Smith",
@@ -87,9 +123,17 @@ export const Task = () => {
       ],
     },
     {
-      code: "TSK-1001",
-      name: "Training and Work Reviews",
+      code: "TSK-1005",
+      name: "Making a Figma for Banking App",
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      status: true,
+      isOpen: true,
+      startDate: "2023-10-10",
+      endDate: "2023-11-11",
+      workHours: "08:00",
+      priority: "High",
+      completed: 66,
+      createdBy: "Jane Warren",
       owners: [
         {
           name: "Steven Smith",
@@ -165,21 +209,53 @@ export const Task = () => {
     );
   };
 
+  const [currentTask, setCurrentTask] = useState<any>(null);
+
+  const handleLoadTask = (id: any) => {
+    setCurrentTask(tasks?.find((task: any) => task?.code === id));
+    scrollToTop();
+  };
+
+  useLayoutEffect(() => {
+    setCurrentTask(tasks[0]);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleNavigateCreateTask = () => {
+    navigate("/control/tasks/create-task");
+  };
+
   return (
     <div className={"px-5"}>
       <p className={"font-bold text-2xl my-5"}>Tasks</p>
       <div className="grid grid-cols-12 mb-5">
-        <div className="col-span-4">
+        <div className="col-span-12 lg:col-span-4">
           <TextField
             label={"Project"}
             type={"text"}
-            id={"gender"}
+            id={"project"}
             helperText={""}
             error={false}
             required={false}
             register={undefined}
             placeholder={"Select a project to get tasks"}
           />
+        </div>
+        <div className="col-span-12 lg:col-span-8 flex justify-end">
+          <div className="mt-7">
+            <Button
+              onClick={handleNavigateCreateTask}
+              text={"+ Create Task"}
+              btnClass={"primary"}
+              type={"button"}
+            />
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-12 gap-5">
@@ -190,6 +266,7 @@ export const Task = () => {
           <div className="w-full flex flex-col divide-y divide-gray-200">
             {tasks?.map((task: any, index) => (
               <div
+                onClick={() => handleLoadTask(task.code)}
                 key={index}
                 className="gap-x-2 py-3 px-4 text-sm font-semibold text-gray-800 hover:bg-blue-100 cursor-default"
               >
@@ -221,92 +298,110 @@ export const Task = () => {
         </div>
         <div className="card rounded-2xl p-5 col-span-12 lg:col-span-8">
           <p className={"text-lg font-bold text-primary"}>
-            Training and Work Reviews
+            {currentTask?.name}
           </p>
           <div className="flex gap-3 items-center mt-5">
             <span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-500 text-white">
-              OPEN
+              {currentTask?.isOpen ? "OPEN" : "CLOSED"}
             </span>
             <p className={"text-sm text-gray-500 font-semibold"}>
-              By Jane Warren
+              {currentTask?.createdBy}
             </p>
           </div>
           <div className={"mt-10"}>
-            <p className={"font-semibold text-sm mb-2"}>Completed - 66%</p>
-            <ProgressBar color={"bg-blue-800"} completed={66} total={100} />
+            <p className={"font-semibold text-sm mb-2"}>
+              Completed - {currentTask?.completed}%
+            </p>
+            <ProgressBar
+              color={"bg-blue-800"}
+              completed={currentTask?.completed}
+              total={100}
+            />
           </div>
           <div className="grid grid-cols-12 mt-5 gap-x-5 gap-y-2">
             <div className="col-span-12">
               <TextField
                 label={"Description"}
                 type={"text"}
-                id={"gender"}
+                id={"description"}
                 helperText={""}
                 error={false}
                 required={false}
                 register={undefined}
+                defaultValue={currentTask?.description}
+                disabled={true}
               />
             </div>
             <div className="col-span-4">
               <TextField
                 label={"Start Date"}
                 type={"date"}
-                id={"gender"}
+                id={"startDate"}
                 helperText={""}
                 error={false}
                 required={false}
                 register={undefined}
+                defaultValue={currentTask?.startDate}
+                disabled={true}
               />
             </div>
             <div className="col-span-4">
               <TextField
                 label={"End Date"}
                 type={"date"}
-                id={"gender"}
+                id={"endDate"}
                 helperText={""}
                 error={false}
                 required={false}
                 register={undefined}
+                defaultValue={currentTask?.endDate}
+                disabled={true}
               />
             </div>
             <div className="col-span-4">
               <TextField
                 label={"Due Date"}
                 type={"date"}
-                id={"gender"}
+                id={"dueDate"}
                 helperText={""}
                 error={false}
                 required={false}
                 register={undefined}
+                defaultValue={currentTask?.endDate}
+                disabled={true}
               />
             </div>
             <div className="col-span-4">
               <TextField
                 label={"Work Hours"}
                 type={"time"}
-                id={"gender"}
+                id={"workHours"}
                 helperText={""}
                 error={false}
                 required={false}
                 register={undefined}
+                defaultValue={currentTask?.workHours}
+                disabled={true}
               />
             </div>
             <div className="col-span-4">
               <TextField
                 label={"Priority"}
                 type={"text"}
-                id={"gender"}
+                id={"priority"}
                 helperText={""}
                 error={false}
                 required={false}
                 register={undefined}
+                defaultValue={currentTask?.priority}
+                disabled={true}
               />
             </div>
             <div className="col-span-4">
               <Switch
                 label={"Status"}
                 id={"status"}
-                defaultChecked={true}
+                defaultChecked={currentTask?.status}
                 disabled={true}
               />
             </div>

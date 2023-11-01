@@ -3,6 +3,7 @@ import { TabPanel } from "../../components/tabs/TabPanel";
 import { MyAttendence } from "../attendance/MyAttendence";
 import { TeamAttendance } from "../attendance/TeamAttendance";
 import { NormalTable } from "../../components/tables/NormalTable";
+import { Button } from "../../components/buttons/Button";
 
 export const CreateEmployee = () => {
   const AddressForm = () => {
@@ -306,6 +307,10 @@ export const CreateEmployee = () => {
               columnHeaders={reportingColumnHeaders}
               tableData={[]}
             />
+          </div>
+          <div className={"col-span-12 flex justify-end gap-5"}>
+            <Button text={"Clear"} btnClass={"secondary"} type={"button"} />
+            <Button text={"Save"} btnClass={"primary"} type={"button"} />
           </div>
         </div>
       </div>

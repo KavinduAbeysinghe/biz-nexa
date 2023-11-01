@@ -16,10 +16,10 @@ export const MyProfile = () => {
       title: "Employment",
       body: <EmploymentTab />,
     },
-    {
-      title: "Settings",
-      body: <h1>Settings Tab</h1>,
-    },
+    // {
+    //   title: "Settings",
+    //   body: <h1>Settings Tab</h1>,
+    // },
   ];
 
   const topButtons = [
