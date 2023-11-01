@@ -209,7 +209,7 @@ export const EmployeeManagement = () => {
             </div>
             <div className="bg-white rounded-lg p-3 mt-3">
               <div className="grid grid-cols-12 gap-3">
-                <div className="col-span-12 lg:col-span-6">
+                <div className="col-span-12 min-[1223px]:col-span-6">
                   <p className={"text-gray-500 font-semibold text-xs mb-2"}>
                     Department
                   </p>
@@ -217,7 +217,7 @@ export const EmployeeManagement = () => {
                     {emp?.department}
                   </p>
                 </div>
-                <div className="col-span-12 lg:col-span-6 flex flex-col items-end">
+                <div className="col-span-12 min-[1223px]:col-span-6 flex flex-col min-[1223px]:items-end">
                   <div>
                     <p className={"text-gray-500 font-semibold text-xs mb-2"}>
                       Hired Date
@@ -228,14 +228,14 @@ export const EmployeeManagement = () => {
                   </div>
                 </div>
               </div>
-              <p className={"mt-4"}>
-                <EmailOutlinedIcon className={"text-gray-500"} />
-                <span className={"pl-3"}>{emp?.email}</span>
-              </p>
-              <p className={"mt-2"}>
-                <LocalPhoneOutlinedIcon className={"text-gray-500"} />
-                <span className={"pl-3"}>{emp?.phone}</span>
-              </p>
+              {/*<p className={"mt-4"}>*/}
+              {/*  <EmailOutlinedIcon className={"text-gray-500"} />*/}
+              {/*  <span className={"pl-3"}>{emp?.email}</span>*/}
+              {/*</p>*/}
+              {/*<p className={"mt-2"}>*/}
+              {/*  <LocalPhoneOutlinedIcon className={"text-gray-500"} />*/}
+              {/*  <span className={"pl-3"}>{emp?.phone}</span>*/}
+              {/*</p>*/}
             </div>
           </div>
         ))}

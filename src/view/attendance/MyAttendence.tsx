@@ -100,7 +100,7 @@ export const MyAttendence = () => {
         <div className={"grid grid-cols-12"}>
           <div
             className={
-              "col-span-12 md:col-span-3 border-r-2 flex flex-col items-center justify-center gap-2 px-5 lg:px-10 text-center"
+              "col-span-12 md:col-span-3 border-b-2 pb-5 mb-5 md:pb-0 md:mb-0 md:border-r-2 md:border-b-0 flex flex-col items-center justify-center gap-2 px-5 lg:px-10 text-center"
             }
           >
             <div className="relative inline-block">
@@ -131,7 +131,7 @@ export const MyAttendence = () => {
           </div>
           <div
             className={
-              "col-span-12 md:col-span-9 grid grid-cols-12 gap-10 items-center px-5 lg:px-10"
+              "col-span-12 md:col-span-9 grid grid-cols-12 items-center px-5 gap-5"
             }
           >
             {topCardData?.map((c: any, index) => (
@@ -156,7 +156,7 @@ export const MyAttendence = () => {
       <div className="card col-span-12 rounded-2xl p-5">
         <p className={"text-blue-700 font-semibold mb-3"}>Attendance History</p>
         <div className={"mb-3 grid grid-cols-12 gap-5"}>
-          <div className="col-span-3">
+          <div className="col-span-12 md:col-span-3">
             <TextField
               label={"From"}
               type={"date"}
@@ -167,7 +167,7 @@ export const MyAttendence = () => {
               register={undefined}
             />
           </div>
-          <div className="col-span-3">
+          <div className="col-span-12 md:col-span-3">
             <TextField
               label={"To"}
               type={"date"}
@@ -178,7 +178,7 @@ export const MyAttendence = () => {
               register={undefined}
             />
           </div>
-          <div className="col-span-2">
+          <div className="col-span-12 md:col-span-2">
             <div className={"mt-7"}>
               <Button text={"Find"} btnClass={"primary"} type={"button"} />
             </div>
