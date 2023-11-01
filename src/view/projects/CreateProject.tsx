@@ -9,19 +9,19 @@ import { useLocation } from "react-router-dom";
 export const guests = [
   {
     guestId: 1,
-    img: require("../../assets/images/person.jpg"),
+    img: require("../../assets/images/person1.jpg"),
   },
   {
     guestId: 2,
-    img: require("../../assets/images/person.jpg"),
+    img: require("../../assets/images/person2.jpg"),
   },
   {
     guestId: 3,
-    img: require("../../assets/images/person.jpg"),
+    img: require("../../assets/images/person3.jpg"),
   },
   {
     guestId: 4,
-    img: require("../../assets/images/person.jpg"),
+    img: require("../../assets/images/person4.jpg"),
   },
 ];
 
@@ -144,7 +144,7 @@ export const CreateProject = () => {
               placeholder={"Start typing to see guests"}
             />
           </div>
-          <div className={"col-span-12 flex gap-2"}>
+          <div className={"col-span-12 flex gap-2 flex-wrap"}>
             {guests?.map((guest: any, index) => (
               <div className="relative inline-block" key={guest?.guestId}>
                 <img
@@ -160,6 +160,15 @@ export const CreateProject = () => {
                 />
               </div>
             ))}
+            <div className="relative inline-block">
+              <div
+                className={
+                  "font-semibold h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white bg-gray-400 text-center flex justify-center items-center"
+                }
+              >
+                +3
+              </div>
+            </div>
           </div>
           <div className={"col-span-12 flex justify-end gap-5"}>
             <Button text={"Clear"} btnClass={"secondary"} type={"button"} />

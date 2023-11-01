@@ -10,7 +10,7 @@ export const EmployeeManagement = () => {
   const employees = [
     {
       name: "Jane Warren",
-      img: "https://i.pravatar.cc/300",
+      img: require("../../assets/images/person.jpg"),
       designation: "UI/UX Designer",
       department: "Design",
       hiredDate: "7/7/20",
@@ -20,7 +20,7 @@ export const EmployeeManagement = () => {
     },
     {
       name: "Mary Johnson",
-      img: "https://i.pravatar.cc/300",
+      img: require("../../assets/images/person1.jpg"),
       designation: "Frontend Engineer",
       department: "Dev",
       hiredDate: "2/3/17",
@@ -30,7 +30,7 @@ export const EmployeeManagement = () => {
     },
     {
       name: "Emily Brown",
-      img: "https://i.pravatar.cc/300",
+      img: require("../../assets/images/person2.jpg"),
       designation: "Backend Engineer",
       department: "Dev",
       hiredDate: "2/5/18",
@@ -40,7 +40,7 @@ export const EmployeeManagement = () => {
     },
     {
       name: "Thomas Jones",
-      img: "https://i.pravatar.cc/300",
+      img: require("../../assets/images/person3.jpg"),
       designation: "Graphic Designer",
       department: "Design",
       hiredDate: "7/7/20",
@@ -50,7 +50,7 @@ export const EmployeeManagement = () => {
     },
     {
       name: "Ethan Anderson",
-      img: "https://i.pravatar.cc/300",
+      img: require("../../assets/images/person4.jpg"),
       designation: "Software Engineer",
       department: "Dev",
       hiredDate: "7/7/20",
@@ -60,7 +60,7 @@ export const EmployeeManagement = () => {
     },
     {
       name: "Sophia Wilson",
-      img: "https://i.pravatar.cc/300",
+      img: require("../../assets/images/person5.jpg"),
       designation: "Software Engineer",
       department: "Dev",
       hiredDate: "7/7/20",
@@ -70,7 +70,7 @@ export const EmployeeManagement = () => {
     },
     {
       name: "Daniel Smith",
-      img: "https://i.pravatar.cc/300",
+      img: require("../../assets/images/person6.jpg"),
       designation: "UI/UX Designer",
       department: "Design",
       hiredDate: "7/7/20",
@@ -80,7 +80,7 @@ export const EmployeeManagement = () => {
     },
     {
       name: "Michael Miller",
-      img: "https://i.pravatar.cc/300",
+      img: require("../../assets/images/person7.jpg"),
       designation: "Frontend Engineer",
       department: "R&D",
       hiredDate: "7/7/20",
@@ -90,7 +90,7 @@ export const EmployeeManagement = () => {
     },
     {
       name: "Olivia Brown",
-      img: "https://i.pravatar.cc/300",
+      img: require("../../assets/images/person8.jpg"),
       designation: "Project Manager",
       department: "Business",
       hiredDate: "7/7/20",
@@ -100,7 +100,7 @@ export const EmployeeManagement = () => {
     },
     {
       name: "Robert Davis",
-      img: "https://i.pravatar.cc/300",
+      img: require("../../assets/images/person9.jpg"),
       designation: "Sales Manager",
       department: "Business",
       hiredDate: "7/7/20",

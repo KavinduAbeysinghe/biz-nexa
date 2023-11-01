@@ -9,6 +9,8 @@ import { Button } from "../../components/buttons/Button";
 import { TabPanel } from "../../components/tabs/TabPanel";
 import { MyAttendence } from "./MyAttendence";
 import { TeamAttendance } from "./TeamAttendance";
+import { MyLeaves } from "./MyLeaves";
+import { TeamLeaves } from "./TeamLeaves";
 
 export const Attendance = () => {
   const tabOptions = [
@@ -20,6 +22,14 @@ export const Attendance = () => {
     {
       title: "Team Attendance",
       body: <TeamAttendance />,
+    },
+    {
+      title: "My Leaves",
+      body: <MyLeaves />,
+    },
+    {
+      title: "Team Leaves",
+      body: <TeamLeaves />,
     },
   ];
 

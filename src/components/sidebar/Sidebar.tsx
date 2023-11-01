@@ -15,19 +15,19 @@ export const Sidebar = () => {
       path: "/control/dashboard",
     },
     {
-      name: "Projects",
-      icon: <FolderCopyIcon fontSize="small" />,
-      path: "/control/projects",
-    },
-    {
       name: "Attendance",
       icon: <CoPresentIcon fontSize="small" />,
       path: "/control/attendance",
     },
     {
-      name: "Calendar",
-      icon: <CalendarMonthIcon fontSize="small" />,
-      path: "/control/calendar",
+      name: "Employees",
+      icon: <BadgeIcon fontSize="small" />,
+      path: "/control/employee-management",
+    },
+    {
+      name: "Projects",
+      icon: <FolderCopyIcon fontSize="small" />,
+      path: "/control/projects",
     },
     {
       name: "Tasks",
@@ -35,14 +35,14 @@ export const Sidebar = () => {
       path: "/control/tasks",
     },
     {
+      name: "Calendar",
+      icon: <CalendarMonthIcon fontSize="small" />,
+      path: "/control/calendar",
+    },
+    {
       name: "Profile",
       icon: <AccountCircleIcon fontSize="small" />,
       path: "/control/profile",
-    },
-    {
-      name: "Employees",
-      icon: <BadgeIcon fontSize="small" />,
-      path: "/control/employee-management",
     },
   ];
 

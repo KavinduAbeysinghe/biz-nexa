@@ -37,51 +37,64 @@ export const NormalTable = ({
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
-                {tableData?.map((row, index) => (
-                  <tr key={index}>
-                    {actionButtons?.length ? (
-                      <td
-                        className={
-                          "px-6 py-3 whitespace-nowrap text-sm font-semibold text-gray-800"
-                        }
-                      >
-                        {actionButtons?.map((b: any, index) => (
-                          <ActionButton
-                            key={index}
-                            tooltip={b.tooltip}
-                            icon={b.icon}
-                            handleClick={() => {
-                              return b.handleClick(row[id ? id : ""]);
-                            }}
-                          />
-                        ))}
-                      </td>
-                    ) : (
-                      <></>
-                    )}
-                    {sideRowHeaders?.length && (
-                      <td
-                        className={
-                          "px-6 py-3 whitespace-nowrap text-sm font-semibold text-gray-800"
-                        }
-                      >
-                        {sideRowHeaders[index]}
-                      </td>
-                    )}
-                    {Object.entries(row)?.map(([key, value], index) => (
-                      <td
-                        key={index}
-                        className={
-                          "px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-800"
-                        }
-                      >
-                        {<>{value}</>}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
+              {tableData?.length ? (
+                <tbody className="divide-y divide-gray-200">
+                  {tableData?.map((row, index) => (
+                    <tr key={index}>
+                      {actionButtons?.length ? (
+                        <td
+                          className={
+                            "px-6 py-3 whitespace-nowrap text-sm font-semibold text-gray-800"
+                          }
+                        >
+                          {actionButtons?.map((b: any, index) => (
+                            <ActionButton
+                              key={index}
+                              tooltip={b.tooltip}
+                              icon={b.icon}
+                              handleClick={() => {
+                                return b.handleClick(row[id ? id : ""]);
+                              }}
+                            />
+                          ))}
+                        </td>
+                      ) : (
+                        <></>
+                      )}
+                      {sideRowHeaders?.length && (
+                        <td
+                          className={
+                            "px-6 py-3 whitespace-nowrap text-sm font-semibold text-gray-800"
+                          }
+                        >
+                          {sideRowHeaders[index]}
+                        </td>
+                      )}
+                      {Object.entries(row)?.map(([key, value], index) => (
+                        <td
+                          key={index}
+                          className={
+                            "px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-800"
+                          }
+                        >
+                          {<>{value}</>}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              ) : (
+                <tbody>
+                  <td
+                    colSpan={columnHeaders?.length}
+                    className={
+                      "px-6 py-3 whitespace-nowrap text-sm font-semibold text-gray-800 text-center"
+                    }
+                  >
+                    No Data Found
+                  </td>
+                </tbody>
+              )}
             </table>
           </div>
         </div>

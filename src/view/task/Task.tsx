@@ -29,15 +29,15 @@ export const Task = () => {
       owners: [
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person1.jpg"),
         },
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person2.jpg"),
         },
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person3.jpg"),
         },
       ],
     },
@@ -56,15 +56,15 @@ export const Task = () => {
       owners: [
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person1.jpg"),
         },
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person2.jpg"),
         },
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person3.jpg"),
         },
       ],
     },
@@ -83,15 +83,15 @@ export const Task = () => {
       owners: [
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person1.jpg"),
         },
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person2.jpg"),
         },
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person3.jpg"),
         },
       ],
     },
@@ -110,15 +110,15 @@ export const Task = () => {
       owners: [
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person1.jpg"),
         },
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person2.jpg"),
         },
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person3.jpg"),
         },
       ],
     },
@@ -137,15 +137,15 @@ export const Task = () => {
       owners: [
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person1.jpg"),
         },
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person2.jpg"),
         },
         {
           name: "Steven Smith",
-          img: require("../../assets/images/person.jpg"),
+          img: require("../../assets/images/person3.jpg"),
         },
       ],
     },
@@ -291,6 +291,15 @@ export const Task = () => {
                       />
                     </Tooltip>
                   ))}
+                  <div className="relative inline-block">
+                    <div
+                      className={
+                        "text-xs font-semibold h-7 w-7 rounded-full ring-2 ring-white bg-gray-400 text-center flex justify-center items-center"
+                      }
+                    >
+                      +3
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -332,7 +341,7 @@ export const Task = () => {
                 disabled={true}
               />
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-4">
               <TextField
                 label={"Start Date"}
                 type={"date"}
@@ -345,7 +354,7 @@ export const Task = () => {
                 disabled={true}
               />
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-4">
               <TextField
                 label={"End Date"}
                 type={"date"}
@@ -358,7 +367,7 @@ export const Task = () => {
                 disabled={true}
               />
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-4">
               <TextField
                 label={"Due Date"}
                 type={"date"}
@@ -371,7 +380,7 @@ export const Task = () => {
                 disabled={true}
               />
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-4">
               <TextField
                 label={"Work Hours"}
                 type={"time"}
@@ -384,7 +393,7 @@ export const Task = () => {
                 disabled={true}
               />
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-4">
               <TextField
                 label={"Priority"}
                 type={"text"}
@@ -397,7 +406,7 @@ export const Task = () => {
                 disabled={true}
               />
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-4">
               <Switch
                 label={"Status"}
                 id={"status"}

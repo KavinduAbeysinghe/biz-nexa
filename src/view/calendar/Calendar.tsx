@@ -6,14 +6,14 @@ const localizer = momentLocalizer(moment);
 export const MyCalendar = () => {
   const myEventsList = [
     {
-      title: "Event 1",
-      start: new Date(2023, 0, 1),
-      end: new Date(2023, 0, 3),
+      title: "Complete The Figma Design",
+      start: new Date(2023, 11, 1),
+      end: new Date(2023, 11, 3),
     },
     {
-      title: "Event 2",
-      start: new Date(2023, 0, 7),
-      end: new Date(2023, 0, 10),
+      title: "Town Hall meeting",
+      start: new Date(2023, 12, 7),
+      end: new Date(2023, 12, 10),
     },
   ];
 
