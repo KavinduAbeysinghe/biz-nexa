@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/biz-nexa/static/css/main.ad186077.css",
+    "main.js": "/biz-nexa/static/js/main.cc36c697.js",
+    "static/js/787.c0b3c9fe.chunk.js": "/biz-nexa/static/js/787.c0b3c9fe.chunk.js",
+    "static/media/person8.jpg": "/biz-nexa/static/media/person8.77b39ea585b7e2903d85.jpg",
+    "static/media/person5.jpg": "/biz-nexa/static/media/person5.d22734ae7341d095ebe9.jpg",
+    "static/media/person3.jpg": "/biz-nexa/static/media/person3.5054b555ab67259e32b2.jpg",
+    "static/media/bgimg.jpg": "/biz-nexa/static/media/bgimg.7bd191f0f199b7fe8a6f.jpg",
+    "static/media/bgv.mp4": "/biz-nexa/static/media/bgv.6cbd27945c5e1643dfa4.mp4",
+    "static/media/person7.jpg": "/biz-nexa/static/media/person7.d7d61a982b04e86b8622.jpg",
+    "static/media/person9.jpg": "/biz-nexa/static/media/person9.5ecb1fe7a6e6dd947e13.jpg",
+    "static/media/person1.jpg": "/biz-nexa/static/media/person1.de652d5af3a3fd6649b5.jpg",
+    "static/media/person4.jpg": "/biz-nexa/static/media/person4.0cb60a284c479722e0ae.jpg",
+    "static/media/person.jpg": "/biz-nexa/static/media/person.3bfa8d192cc1c3040634.jpg",
+    "static/media/person2.jpg": "/biz-nexa/static/media/person2.bb4b20a39d11c534cb6f.jpg",
+    "static/media/person6.jpg": "/biz-nexa/static/media/person6.adbece83979f1843b608.jpg",
+    "static/media/profileCover.jpeg": "/biz-nexa/static/media/profileCover.af1219a742e09fc7b612.jpeg",
+    "index.html": "/biz-nexa/index.html",
+    "main.ad186077.css.map": "/biz-nexa/static/css/main.ad186077.css.map",
+    "main.cc36c697.js.map": "/biz-nexa/static/js/main.cc36c697.js.map",
+    "787.c0b3c9fe.chunk.js.map": "/biz-nexa/static/js/787.c0b3c9fe.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ad186077.css",
+    "static/js/main.cc36c697.js"
+  ]
+}
