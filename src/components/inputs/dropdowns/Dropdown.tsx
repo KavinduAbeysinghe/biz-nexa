@@ -1,6 +1,6 @@
 interface DropdownProps {
   title: string;
-  options: Array<string>;
+  options: Array<any>;
 }
 
 export const Dropdown = ({ title, options }: DropdownProps) => {
@@ -37,9 +37,9 @@ export const Dropdown = ({ title, options }: DropdownProps) => {
           <a
             key={index}
             className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
-            href="#"
+            onClick={opt?.onClick}
           >
-            {opt}
+            {opt?.option}
           </a>
         ))}
       </div>

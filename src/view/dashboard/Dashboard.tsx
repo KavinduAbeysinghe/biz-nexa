@@ -5,6 +5,7 @@ import { DigitalClock } from "../../components/clock/DigitalClock";
 import { NormalTable } from "../../components/tables/NormalTable";
 import { CollapsibleNotice } from "../../components/collapsibleNotices/CollapsibleNotice";
 import { Dropdown } from "../../components/inputs/dropdowns/Dropdown";
+import { useLayoutEffect, useState } from "react";
 
 export const attendanceColumnHeaders = [
   "S.NO",
@@ -192,6 +193,39 @@ export const Dashboard = () => {
     },
   ];
 
+  const [noticesList, setNoticesList] = useState<Array<any>>([]);
+
+  const filterByPriority = (priority: "high" | "medium" | "low" | "all") => {
+    priority !== "all"
+      ? setNoticesList(
+          noticesData?.filter((notice: any) => notice?.priority === priority),
+        )
+      : setNoticesList(noticesData);
+  };
+
+  useLayoutEffect(() => {
+    setNoticesList(noticesData);
+  }, []);
+
+  const dropdownOptions = [
+    {
+      option: "All",
+      onClick: () => filterByPriority("all"),
+    },
+    {
+      option: "High Priority",
+      onClick: () => filterByPriority("high"),
+    },
+    {
+      option: "Medium Priority",
+      onClick: () => filterByPriority("medium"),
+    },
+    {
+      option: "Low Priority",
+      onClick: () => filterByPriority("low"),
+    },
+  ];
+
   return (
     <div className={"px-5"}>
       <div className={"flex justify-between mt-5 items-center"}>
@@ -206,18 +240,10 @@ export const Dashboard = () => {
         >
           <p className={"text-blue-700 font-semibold"}>Notices</p>
           <div className={"my-3"}>
-            <Dropdown
-              options={[
-                "By Date",
-                "By High Priority",
-                "By Medium Priority",
-                "By Low Priority",
-              ]}
-              title={"Filter"}
-            />
+            <Dropdown options={dropdownOptions} title={"Filter"} />
           </div>
           <div className={"h-64 overflow-auto flex flex-col gap-3"}>
-            {noticesData?.map((notice: any, index) => (
+            {noticesList?.map((notice: any, index) => (
               <CollapsibleNotice
                 priority={notice?.priority}
                 title={notice?.title}
