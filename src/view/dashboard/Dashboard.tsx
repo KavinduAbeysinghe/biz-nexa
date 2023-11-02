@@ -107,33 +107,28 @@ export const Dashboard = () => {
   const noticesData = [
     {
       priority: "high",
-      title: "Completion of Time Sheets",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
+      title: "Time Sheets Deadline",
+      description: "Submit your time sheets by the end of the day.",
     },
     {
       priority: "medium",
-      title: "Completion of Time Sheets",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
+      title: "Upcoming Meeting",
+      description: "Join us for an important meeting tomorrow.",
     },
     {
       priority: "high",
-      title: "Completion of Time Sheets",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
+      title: "Project Update",
+      description: "Check out the latest project status and updates.",
     },
     {
       priority: "low",
-      title: "Completion of Time Sheets",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
+      title: "Employee Survey",
+      description: "Participate in our annual employee satisfaction survey.",
     },
     {
       priority: "medium",
-      title: "Completion of Time Sheets",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
+      title: "Training Session",
+      description: "Attend a training session to enhance your skills.",
     },
   ];
 
@@ -247,6 +242,7 @@ export const Dashboard = () => {
               <CollapsibleNotice
                 priority={notice?.priority}
                 title={notice?.title}
+                description={notice?.description}
                 id={`NOT${index}`}
                 key={index}
               />

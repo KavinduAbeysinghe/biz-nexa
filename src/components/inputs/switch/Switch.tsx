@@ -3,6 +3,7 @@ interface SwitchProps {
   id: string;
   defaultChecked?: boolean;
   disabled: boolean;
+  checked?: boolean;
 }
 
 export const Switch = ({
@@ -10,6 +11,7 @@ export const Switch = ({
   id,
   defaultChecked,
   disabled,
+  checked,
 }: SwitchProps) => {
   return (
     <div className={"flex flex-col"}>
@@ -17,6 +19,7 @@ export const Switch = ({
         {label}
       </label>
       <input
+        checked={checked}
         disabled={disabled}
         defaultChecked={defaultChecked}
         type="checkbox"

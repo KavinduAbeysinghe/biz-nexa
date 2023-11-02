@@ -101,7 +101,11 @@ export const NormalTable = ({
               ) : (
                 <tbody>
                   <td
-                    colSpan={columnHeaders?.length}
+                    colSpan={
+                      !actionButtons?.length
+                        ? columnHeaders?.length
+                        : columnHeaders?.length + 1
+                    }
                     className={
                       "px-6 py-3 whitespace-nowrap text-sm font-semibold text-gray-800 text-center"
                     }
@@ -112,14 +116,18 @@ export const NormalTable = ({
               )}
             </table>
           </div>
-          <div className="flex justify-center items-center mt-2">
-            <Pagination
-              count={Math.ceil(tableData.length / rowsPerPage)}
-              shape="rounded"
-              onChange={(event) => handlePageChange}
-              page={page}
-            />
-          </div>
+          {tableData?.length ? (
+            <div className="flex justify-center items-center mt-2">
+              <Pagination
+                count={Math.ceil(tableData.length / rowsPerPage)}
+                shape="rounded"
+                onChange={(event) => handlePageChange}
+                page={page}
+              />
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

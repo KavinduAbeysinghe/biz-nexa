@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface TextFieldProps {
   label: string;
   type: any;
@@ -10,6 +12,7 @@ interface TextFieldProps {
   register: any;
   disabled?: boolean;
   defaultValue?: any;
+  value?: any;
 }
 
 export const TextField = ({
@@ -24,6 +27,7 @@ export const TextField = ({
   register,
   disabled,
   defaultValue,
+  value,
 }: TextFieldProps) => {
   return (
     <div>
@@ -37,6 +41,7 @@ export const TextField = ({
       </label>
       <div className="relative">
         <input
+          value={value}
           defaultValue={defaultValue}
           disabled={disabled}
           {...register}

@@ -4,9 +4,9 @@ import { MainLayout } from "./view/MainLayout";
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <MainLayout />
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
