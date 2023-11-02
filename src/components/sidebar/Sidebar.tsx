@@ -5,6 +5,7 @@ import CoPresentIcon from "@mui/icons-material/CoPresent";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import TaskIcon from "@mui/icons-material/Task";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 export const Sidebar = () => {
   const sideBarItems: any[] = [
@@ -14,24 +15,29 @@ export const Sidebar = () => {
       path: "/control/dashboard",
     },
     {
-      name: "Projects",
-      icon: <FolderCopyIcon fontSize="small" />,
-      path: "/control/projects",
-    },
-    {
       name: "Attendance",
       icon: <CoPresentIcon fontSize="small" />,
       path: "/control/attendance",
     },
     {
-      name: "Calendar",
-      icon: <CalendarMonthIcon fontSize="small" />,
-      path: "/control/calendar",
+      name: "Employees",
+      icon: <BadgeIcon fontSize="small" />,
+      path: "/control/employee-management",
+    },
+    {
+      name: "Projects",
+      icon: <FolderCopyIcon fontSize="small" />,
+      path: "/control/projects",
     },
     {
       name: "Tasks",
       icon: <TaskIcon fontSize="small" />,
       path: "/control/tasks",
+    },
+    {
+      name: "Calendar",
+      icon: <CalendarMonthIcon fontSize="small" />,
+      path: "/control/calendar",
     },
     {
       name: "Profile",
@@ -92,22 +98,22 @@ export const Sidebar = () => {
             </li>
           ))}
         </ul>
-        <p className="text-xs my-3 text-white">Recent Projects</p>
-        <ul className="space-y-1.5">
-          {recentProjects?.map((item: any, index) => (
-            <li
-              key={index}
-              className="list-disc list-inside text-gray-900 dark:text-gray-200"
-            >
-              <a
-                className="text-sm text-slate-400 dark:hover:text-slate-300"
-                href="#"
-              >
-                {item?.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+        {/*<p className="text-xs my-3 text-white">Recent Projects</p>*/}
+        {/*<ul className="space-y-1.5">*/}
+        {/*  {recentProjects?.map((item: any, index) => (*/}
+        {/*    <li*/}
+        {/*      key={index}*/}
+        {/*      className="list-disc list-inside text-gray-900 dark:text-gray-200"*/}
+        {/*    >*/}
+        {/*      <a*/}
+        {/*        className="text-sm text-slate-400 dark:hover:text-slate-300"*/}
+        {/*        href="#"*/}
+        {/*      >*/}
+        {/*        {item?.name}*/}
+        {/*      </a>*/}
+        {/*    </li>*/}
+        {/*  ))}*/}
+        {/*</ul>*/}
       </nav>
     </div>
   );

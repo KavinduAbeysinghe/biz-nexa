@@ -2,12 +2,14 @@ interface CollapsibleNoticeProps {
   priority: "high" | "medium" | "low";
   title: string;
   id: string;
+  description: string;
 }
 
 export const CollapsibleNotice = ({
   priority,
   title,
   id,
+  description,
 }: CollapsibleNoticeProps) => {
   return (
     <div
@@ -61,12 +63,7 @@ export const CollapsibleNotice = ({
         className="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300"
         aria-labelledby={id}
       >
-        <p>
-          This is a collapse body. It is hidden by default, until the collapse
-          plugin adds the appropriate classes that we use to style each element.
-          These classes control the overall appearance, as well as the showing
-          and hiding via CSS transitions.
-        </p>
+        <p>{description}</p>
       </div>
     </div>
   );

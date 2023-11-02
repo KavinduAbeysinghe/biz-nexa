@@ -5,6 +5,65 @@ import { DigitalClock } from "../../components/clock/DigitalClock";
 import { NormalTable } from "../../components/tables/NormalTable";
 import { CollapsibleNotice } from "../../components/collapsibleNotices/CollapsibleNotice";
 import { Dropdown } from "../../components/inputs/dropdowns/Dropdown";
+import { useLayoutEffect, useState } from "react";
+
+export const attendanceColumnHeaders = [
+  "S.NO",
+  "Date",
+  "Punch In",
+  "Punch Out",
+  "Production",
+  "Break",
+  "Overtime",
+];
+
+export const attendanceTableData = [
+  {
+    sNo: 1001,
+    date: "28 Oct 2023",
+    punchIn: "8 AM",
+    punchOut: "5 PM",
+    production: "8 hrs",
+    break: "1 hrs",
+    overtime: "1 hrs",
+  },
+  {
+    sNo: 1001,
+    date: "28 Oct 2023",
+    punchIn: "8 AM",
+    punchOut: "5 PM",
+    production: "8 hrs",
+    break: "1 hrs",
+    overtime: "1 hrs",
+  },
+  {
+    sNo: 1001,
+    date: "28 Oct 2023",
+    punchIn: "8 AM",
+    punchOut: "5 PM",
+    production: "8 hrs",
+    break: "1 hrs",
+    overtime: "1 hrs",
+  },
+  {
+    sNo: 1001,
+    date: "28 Oct 2023",
+    punchIn: "8 AM",
+    punchOut: "5 PM",
+    production: "8 hrs",
+    break: "1 hrs",
+    overtime: "1 hrs",
+  },
+  {
+    sNo: 1001,
+    date: "28 Oct 2023",
+    punchIn: "8 AM",
+    punchOut: "5 PM",
+    production: "8 hrs",
+    break: "1 hrs",
+    overtime: "1 hrs",
+  },
+];
 
 export const Dashboard = () => {
   const statisticsOptions = [
@@ -45,94 +104,31 @@ export const Dashboard = () => {
     },
   ];
 
-  const attendanceColumnHeaders = [
-    "S.NO",
-    "Date",
-    "Punch In",
-    "Punch Out",
-    "Production",
-    "Break",
-    "Overtime",
-  ];
-
-  const attendanceTableData = [
-    {
-      sNo: 1001,
-      date: "28 Oct 2023",
-      punchIn: "8 AM",
-      punchOut: "5 PM",
-      production: "8 hrs",
-      break: "1 hrs",
-      overtime: "1 hrs",
-    },
-    {
-      sNo: 1001,
-      date: "28 Oct 2023",
-      punchIn: "8 AM",
-      punchOut: "5 PM",
-      production: "8 hrs",
-      break: "1 hrs",
-      overtime: "1 hrs",
-    },
-    {
-      sNo: 1001,
-      date: "28 Oct 2023",
-      punchIn: "8 AM",
-      punchOut: "5 PM",
-      production: "8 hrs",
-      break: "1 hrs",
-      overtime: "1 hrs",
-    },
-    {
-      sNo: 1001,
-      date: "28 Oct 2023",
-      punchIn: "8 AM",
-      punchOut: "5 PM",
-      production: "8 hrs",
-      break: "1 hrs",
-      overtime: "1 hrs",
-    },
-    {
-      sNo: 1001,
-      date: "28 Oct 2023",
-      punchIn: "8 AM",
-      punchOut: "5 PM",
-      production: "8 hrs",
-      break: "1 hrs",
-      overtime: "1 hrs",
-    },
-  ];
-
   const noticesData = [
     {
       priority: "high",
-      title: "Completion of Time Sheets",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
+      title: "Time Sheets Deadline",
+      description: "Submit your time sheets by the end of the day.",
     },
     {
       priority: "medium",
-      title: "Completion of Time Sheets",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
+      title: "Upcoming Meeting",
+      description: "Join us for an important meeting tomorrow.",
     },
     {
       priority: "high",
-      title: "Completion of Time Sheets",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
+      title: "Project Update",
+      description: "Check out the latest project status and updates.",
     },
     {
       priority: "low",
-      title: "Completion of Time Sheets",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
+      title: "Employee Survey",
+      description: "Participate in our annual employee satisfaction survey.",
     },
     {
       priority: "medium",
-      title: "Completion of Time Sheets",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
+      title: "Training Session",
+      description: "Attend a training session to enhance your skills.",
     },
   ];
 
@@ -192,6 +188,39 @@ export const Dashboard = () => {
     },
   ];
 
+  const [noticesList, setNoticesList] = useState<Array<any>>([]);
+
+  const filterByPriority = (priority: "high" | "medium" | "low" | "all") => {
+    priority !== "all"
+      ? setNoticesList(
+          noticesData?.filter((notice: any) => notice?.priority === priority),
+        )
+      : setNoticesList(noticesData);
+  };
+
+  useLayoutEffect(() => {
+    setNoticesList(noticesData);
+  }, []);
+
+  const dropdownOptions = [
+    {
+      option: "All",
+      onClick: () => filterByPriority("all"),
+    },
+    {
+      option: "High Priority",
+      onClick: () => filterByPriority("high"),
+    },
+    {
+      option: "Medium Priority",
+      onClick: () => filterByPriority("medium"),
+    },
+    {
+      option: "Low Priority",
+      onClick: () => filterByPriority("low"),
+    },
+  ];
+
   return (
     <div className={"px-5"}>
       <div className={"flex justify-between mt-5 items-center"}>
@@ -206,21 +235,14 @@ export const Dashboard = () => {
         >
           <p className={"text-blue-700 font-semibold"}>Notices</p>
           <div className={"my-3"}>
-            <Dropdown
-              options={[
-                "By Date",
-                "By High Priority",
-                "By Medium Priority",
-                "By Low Priority",
-              ]}
-              title={"Filter"}
-            />
+            <Dropdown options={dropdownOptions} title={"Filter"} />
           </div>
           <div className={"h-64 overflow-auto flex flex-col gap-3"}>
-            {noticesData?.map((notice: any, index) => (
+            {noticesList?.map((notice: any, index) => (
               <CollapsibleNotice
                 priority={notice?.priority}
                 title={notice?.title}
+                description={notice?.description}
                 id={`NOT${index}`}
                 key={index}
               />
@@ -257,7 +279,7 @@ export const Dashboard = () => {
             "card col-span-12 lg:col-span-4 p-3 rounded-2xl flex flex-col justify-between"
           }
         >
-          <p className={"text-blue-700 font-semibold"}>Timesheets</p>
+          <p className={"text-blue-700 font-semibold"}>Time Sheets</p>
           <div className={"rounded border-2 p-2"}>
             <p className={"text-sm font-semibold"}>Punch in at</p>
             <p className={"text-sm text-gray-600"}>
@@ -312,7 +334,7 @@ export const Dashboard = () => {
             />
           </div>
         </div>
-        <div className={"card col-span-12 lg:col-span-6 p-3 rounded"}>
+        <div className={"card col-span-12 lg:col-span-6 p-3 rounded-2xl"}>
           <p className={"text-blue-700 font-semibold"}>Tasks Due Today</p>
           <span className="my-3 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-500 text-white">
             Total Count 5
@@ -337,7 +359,7 @@ export const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className={"card col-span-12 lg:col-span-6 p-3 rounded"}>
+        <div className={"card col-span-12 lg:col-span-6 p-3 rounded-2xl"}>
           <p className={"text-blue-700 font-semibold"}>Tasks Overdue</p>
           <span className="my-3 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-500 text-white">
             Total Count 5

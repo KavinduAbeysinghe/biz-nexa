@@ -7,8 +7,8 @@ interface TabPanelProps {
 export const TabPanel = ({ options }: TabPanelProps) => {
   return (
     <>
-      <div className="flex">
-        <div className="flex bg-gray-100 hover:bg-gray-200 rounded-lg transition p-1">
+      <div className="flex overflow-auto">
+        <div className="flex bg-gray-100 bg-gray-200 rounded-lg transition p-1">
           <nav className="flex space-x-2" aria-label="Tabs" role="tablist">
             {options?.map(
               (
@@ -17,7 +17,7 @@ export const TabPanel = ({ options }: TabPanelProps) => {
                   body: ReactJSXElement;
                   active?: boolean;
                 },
-                index: number
+                index: number,
               ) => (
                 <button
                   key={index}
@@ -32,7 +32,7 @@ export const TabPanel = ({ options }: TabPanelProps) => {
                 >
                   {option?.title}
                 </button>
-              )
+              ),
             )}
           </nav>
         </div>
@@ -42,7 +42,7 @@ export const TabPanel = ({ options }: TabPanelProps) => {
         {options?.map(
           (
             option: { title: string; body: ReactJSXElement; active?: boolean },
-            index
+            index,
           ) => (
             <div
               className={!option?.active ? "hidden" : ""}
@@ -52,7 +52,7 @@ export const TabPanel = ({ options }: TabPanelProps) => {
             >
               {option?.body}
             </div>
-          )
+          ),
         )}
       </div>
     </>
