@@ -3,7 +3,7 @@ import { faEye } from "@fortawesome/free-regular-svg-icons";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../../components/buttons/Button";
-import { TextField } from "../../components/inputs/TextField";
+import { TextField } from "../../components/inputs/texts/TextField";
 
 export const TeamLeaves = () => {
   const teamLeaveHeads = [

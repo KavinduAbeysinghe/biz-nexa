@@ -4,7 +4,7 @@ import {
   attendanceColumnHeaders,
   attendanceTableData,
 } from "../dashboard/Dashboard";
-import { TextField } from "../../components/inputs/TextField";
+import { TextField } from "../../components/inputs/texts/TextField";
 import { Button } from "../../components/buttons/Button";
 import { TabPanel } from "../../components/tabs/TabPanel";
 import { MyAttendence } from "./MyAttendence";

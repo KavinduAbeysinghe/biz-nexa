@@ -1,10 +1,15 @@
-import { TextField } from "../../components/inputs/TextField";
+import { TextField } from "../../components/inputs/texts/TextField";
 import { Button } from "../../components/buttons/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import ViewTimelineIcon from "@mui/icons-material/ViewTimeline";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import FormAutoCompleteField from "../../components/inputs/texts/FormAutocompleteField";
+import { reportingEmployees } from "../employeeManagement/CreateEmployee";
+import * as Yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export const guests = [
   {
@@ -22,6 +27,10 @@ export const guests = [
   {
     guestId: 4,
     img: require("../../assets/images/person4.jpg"),
+  },
+  {
+    guestId: 5,
+    img: require("../../assets/images/person5.jpg"),
   },
 ];
 
@@ -46,6 +55,44 @@ export const CreateProject = () => {
       setTitle("Create Project");
     }
   }, [location]);
+
+  const commonError = "Field is required";
+
+  const validationSchema = Yup.object().shape({
+    reportingEmployee: Yup.string().required(commonError),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    watch,
+    control,
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const reportingEmployee = watch("reportingEmployee");
+
+  const [guestArr, setGuestArr] = useState<Array<any>>([]);
+
+  useEffect(() => {
+    if (reportingEmployee) {
+      const guest = guests?.find((g: any) => g?.guestId === reportingEmployee);
+      if (!guestArr.includes(guest)) {
+        setGuestArr((prevState) => [...prevState, guest]);
+      } else {
+        console.log("already added");
+      }
+    }
+  }, [reportingEmployee]);
+
+  const handleRemoveGuest = (id: any) => {
+    setGuestArr((prevState) => [
+      ...prevState.filter((g: any) => g?.guestId !== id),
+    ]);
+  };
 
   return (
     <div className={"px-5"}>
@@ -133,19 +180,26 @@ export const CreateProject = () => {
             />
           </div>
           <div className={"col-span-12"}>
-            <TextField
-              label={"Add Guests"}
-              type={"text"}
-              id={"guests"}
-              helperText={""}
-              error={false}
+            <FormAutoCompleteField
+              options={reportingEmployees}
+              register={register("reportingEmployee")}
+              label={"Reporting Employee"}
+              error={!!errors?.reportingEmployee?.message}
+              helperText={
+                errors?.reportingEmployee?.message
+                  ? errors?.reportingEmployee?.message?.toString()
+                  : ""
+              }
+              id={"reportingEmployee"}
               required={true}
-              register={undefined}
-              placeholder={"Start typing to see guests"}
+              control={control}
+              setValue={setValue}
+              watch={watch}
+              placeholder={"Enter reporting employee name"}
             />
           </div>
           <div className={"col-span-12 flex gap-2 flex-wrap"}>
-            {guests?.map((guest: any, index) => (
+            {guestArr.slice(0, 3)?.map((guest: any, index) => (
               <div className="relative inline-block" key={guest?.guestId}>
                 <img
                   className="object-cover inline-block h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white"
@@ -153,6 +207,7 @@ export const CreateProject = () => {
                   alt="Image Description"
                 />
                 <FontAwesomeIcon
+                  onClick={() => handleRemoveGuest(guest?.guestId)}
                   icon={faCircleXmark}
                   className={
                     "cursor-pointer text-sm absolute top-0 right-0 block h-3 w-3 rounded-full ring-2 ring-white bg-white"
@@ -160,15 +215,17 @@ export const CreateProject = () => {
                 />
               </div>
             ))}
-            <div className="relative inline-block">
-              <div
-                className={
-                  "font-semibold h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white bg-gray-400 text-center flex justify-center items-center"
-                }
-              >
-                +3
+            {guestArr?.length > 3 && (
+              <div className="relative inline-block">
+                <div
+                  className={
+                    "font-semibold h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white bg-gray-400 text-center flex justify-center items-center"
+                  }
+                >
+                  {`+${guestArr.length - 3}`}
+                </div>
               </div>
-            </div>
+            )}
           </div>
           <div className={"col-span-12 flex justify-end gap-5"}>
             <Button text={"Clear"} btnClass={"secondary"} type={"button"} />

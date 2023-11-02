@@ -1,4 +1,4 @@
-import { TextField } from "../../components/inputs/TextField";
+import { TextField } from "../../components/inputs/texts/TextField";
 import { Tooltip } from "@mui/material";
 import { SearchField } from "../../components/inputs/texts/SearchField";
 import { ProgressBar } from "../../components/progress/ProgressBar";
@@ -7,8 +7,14 @@ import { Button } from "../../components/buttons/Button";
 import { NormalTable } from "../../components/tables/NormalTable";
 import { faEye, faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { Modal } from "../../components/modals/Modal";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { reportingEmployees } from "../employeeManagement/CreateEmployee";
+import FormAutoCompleteField from "../../components/inputs/texts/FormAutocompleteField";
+import * as Yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { AddTimeLogForm } from "./AddTimeLogForm";
 
 export const Task = () => {
   const navigate = useNavigate();
@@ -16,6 +22,7 @@ export const Task = () => {
   const tasks = [
     {
       code: "TSK-1001",
+      projectId: 1,
       name: "Training and Work Reviews",
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
       status: true,
@@ -24,7 +31,7 @@ export const Task = () => {
       endDate: "2023-11-11",
       workHours: "08:00",
       priority: "High",
-      completed: 66,
+      completed: 75,
       createdBy: "Jane Warren",
       owners: [
         {
@@ -40,9 +47,11 @@ export const Task = () => {
           img: require("../../assets/images/person3.jpg"),
         },
       ],
+      permitted: false,
     },
     {
       code: "TSK-1002",
+      projectId: 1,
       name: "Learning Next JS",
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
       status: true,
@@ -67,9 +76,11 @@ export const Task = () => {
           img: require("../../assets/images/person3.jpg"),
         },
       ],
+      permitted: true,
     },
     {
       code: "TSK-1003",
+      projectId: 1,
       name: "Preparing a Document for Figma",
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
       status: true,
@@ -78,7 +89,7 @@ export const Task = () => {
       endDate: "2023-11-11",
       workHours: "08:00",
       priority: "High",
-      completed: 66,
+      completed: 50,
       createdBy: "Jane Warren",
       owners: [
         {
@@ -94,9 +105,11 @@ export const Task = () => {
           img: require("../../assets/images/person3.jpg"),
         },
       ],
+      permitted: false,
     },
     {
       code: "TSK-1004",
+      projectId: 2,
       name: "Developing a Complete Fullstack Application",
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
       status: true,
@@ -105,7 +118,7 @@ export const Task = () => {
       endDate: "2023-11-11",
       workHours: "08:00",
       priority: "High",
-      completed: 66,
+      completed: 40,
       createdBy: "Jane Warren",
       owners: [
         {
@@ -121,9 +134,11 @@ export const Task = () => {
           img: require("../../assets/images/person3.jpg"),
         },
       ],
+      permitted: false,
     },
     {
       code: "TSK-1005",
+      projectId: 2,
       name: "Making a Figma for Banking App",
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
       status: true,
@@ -132,7 +147,7 @@ export const Task = () => {
       endDate: "2023-11-11",
       workHours: "08:00",
       priority: "High",
-      completed: 66,
+      completed: 90,
       createdBy: "Jane Warren",
       owners: [
         {
@@ -148,6 +163,65 @@ export const Task = () => {
           img: require("../../assets/images/person3.jpg"),
         },
       ],
+      permitted: false,
+    },
+    {
+      code: "TSK-1006",
+      projectId: 1,
+      name: "Learning Session",
+      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      status: true,
+      isOpen: true,
+      startDate: "2023-10-10",
+      endDate: "2023-11-11",
+      workHours: "08:00",
+      priority: "High",
+      completed: 33,
+      createdBy: "Jane Warren",
+      owners: [
+        {
+          name: "Steven Smith",
+          img: require("../../assets/images/person1.jpg"),
+        },
+        {
+          name: "Steven Smith",
+          img: require("../../assets/images/person2.jpg"),
+        },
+        {
+          name: "Steven Smith",
+          img: require("../../assets/images/person3.jpg"),
+        },
+      ],
+      permitted: false,
+    },
+    {
+      code: "TSK-1007",
+      projectId: 1,
+      name: "Implementing a Frontend",
+      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      status: true,
+      isOpen: true,
+      startDate: "2023-10-10",
+      endDate: "2023-11-11",
+      workHours: "08:00",
+      priority: "High",
+      completed: 40,
+      createdBy: "Jane Warren",
+      owners: [
+        {
+          name: "Steven Smith",
+          img: require("../../assets/images/person1.jpg"),
+        },
+        {
+          name: "Steven Smith",
+          img: require("../../assets/images/person2.jpg"),
+        },
+        {
+          name: "Steven Smith",
+          img: require("../../assets/images/person3.jpg"),
+        },
+      ],
+      permitted: false,
     },
   ];
 
@@ -169,56 +243,12 @@ export const Task = () => {
     },
   ];
 
-  const ModalBody = () => {
-    return (
-      <div className="grid grid-cols-12 gap-x-5 gap-y-2">
-        <div className="col-span-4">
-          <TextField
-            label={"Date"}
-            type={"date"}
-            id={"date"}
-            helperText={""}
-            error={false}
-            required={false}
-            register={undefined}
-          />
-        </div>
-        <div className="col-span-4">
-          <TextField
-            label={"Start Time"}
-            type={"time"}
-            id={"startTime"}
-            helperText={""}
-            error={false}
-            required={false}
-            register={undefined}
-          />
-        </div>
-        <div className="col-span-4">
-          <TextField
-            label={"End Time"}
-            type={"time"}
-            id={"endTime"}
-            helperText={""}
-            error={false}
-            required={false}
-            register={undefined}
-          />
-        </div>
-      </div>
-    );
-  };
-
   const [currentTask, setCurrentTask] = useState<any>(null);
 
   const handleLoadTask = (id: any) => {
     setCurrentTask(tasks?.find((task: any) => task?.code === id));
     scrollToTop();
   };
-
-  useLayoutEffect(() => {
-    setCurrentTask(tasks[0]);
-  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -231,19 +261,65 @@ export const Task = () => {
     navigate("/control/tasks/create-task");
   };
 
+  const commonError = "Field is required";
+
+  const validationSchema = Yup.object().shape({
+    project: Yup.number().required(commonError),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    watch,
+    control,
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const projects = [
+    { value: 1, label: "PR1001 - Project One" },
+    { value: 2, label: "PR1002 - Project Two" },
+    { value: 3, label: "PR1003 - Project Three" },
+    { value: 4, label: "PR1004 - Project Four" },
+    { value: 5, label: "PR1005 - Project Five" },
+  ];
+
+  const project = watch("project");
+
+  const [filteredTasks, setFilteredTasks] = useState<Array<any>>([]);
+
+  useEffect(() => {
+    if (project) {
+      const tsk = tasks?.filter((t: any) => t?.projectId === project);
+      setFilteredTasks(tsk);
+      setCurrentTask(tsk[0]);
+    }
+  }, [project]);
+
+  useEffect(() => {
+    setValue("project", 1);
+    setFilteredTasks(tasks?.filter((task: any) => task?.projectId === 1));
+    setCurrentTask(tasks[0]);
+  }, []);
+
   return (
     <div className={"px-5"}>
       <p className={"font-bold text-2xl my-5"}>Tasks</p>
       <div className="grid grid-cols-12 mb-5">
         <div className="col-span-12 lg:col-span-4">
-          <TextField
+          <FormAutoCompleteField
+            options={projects}
+            register={register("project")}
             label={"Project"}
-            type={"text"}
-            id={"project"}
-            helperText={""}
             error={false}
-            required={false}
-            register={undefined}
+            helperText={""}
+            id={"project"}
+            required={true}
+            control={control}
+            setValue={setValue}
+            watch={watch}
             placeholder={"Select a project to get tasks"}
           />
         </div>
@@ -264,7 +340,7 @@ export const Task = () => {
             <SearchField placeholder={"Search for tasks..."} />
           </div>
           <div className="w-full flex flex-col divide-y divide-gray-200">
-            {tasks?.map((task: any, index) => (
+            {filteredTasks?.map((task: any, index) => (
               <div
                 onClick={() => handleLoadTask(task.code)}
                 key={index}
@@ -435,7 +511,7 @@ export const Task = () => {
       <Modal
         id={"task-modal"}
         title={"Add Time Log"}
-        body={<ModalBody />}
+        body={<AddTimeLogForm />}
         onSaveClick={() => {}}
       />
     </div>

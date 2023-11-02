@@ -1,5 +1,5 @@
 import { ProgressBar } from "../../components/progress/ProgressBar";
-import { TextField } from "../../components/inputs/TextField";
+import { TextField } from "../../components/inputs/texts/TextField";
 import { Button } from "../../components/buttons/Button";
 import { NormalTable } from "../../components/tables/NormalTable";
 import { TableInput } from "../../components/inputs/texts/TableInput";
